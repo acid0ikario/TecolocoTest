@@ -11,7 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-
+using ServiceBusiness.Interfaces;
+using ServiceBusiness.Services;
+using AutoMapper;
+using WebApp.Helpers;
 
 namespace WebApp
 {
@@ -37,6 +40,8 @@ namespace WebApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<TecolocoDbContext>(x => x.UseSqlServer(Configuration.GetConnectionString("TestDevConn")));
+            services.AddScoped<IJobsService, JobsService>();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
