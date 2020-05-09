@@ -12,5 +12,6 @@ namespace ServiceBusiness.Interfaces
         Jobs UpdateJob(Jobs job);
         void DeleteJob(int id);
         List<Jobs> GetListJobs();
+        bool JobExist(int id);
     }
 }

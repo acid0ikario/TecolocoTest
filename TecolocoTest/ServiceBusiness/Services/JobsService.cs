@@ -4,6 +4,7 @@ using ServiceBusiness.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace ServiceBusiness.Services
@@ -17,6 +18,7 @@ namespace ServiceBusiness.Services
         }
         public Jobs AddJob(Jobs job)
         {
+            job.CreatedAt = DateTime.Now;
             _dbcontext.Jobs.Add(job);
             _dbcontext.SaveChanges();
             return job;
@@ -37,6 +39,11 @@ namespace ServiceBusiness.Services
         public List<Jobs> GetListJobs()
         {
             return _dbcontext.Jobs.ToList();
+        }
+
+        public bool JobExist(int id)
+        {
+            return _dbcontext.Jobs.Any(x => x.Id == id);
         }
 
         public Jobs UpdateJob(Jobs job)
