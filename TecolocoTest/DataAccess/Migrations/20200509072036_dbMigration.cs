@@ -14,8 +14,8 @@ namespace DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    JobTitle = table.Column<string>(nullable: true),
-                    Descripcion = table.Column<string>(nullable: true),
+                    JobTitle = table.Column<string>(nullable: false),
+                    Descripcion = table.Column<string>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     ExpiredAt = table.Column<DateTime>(nullable: false)
                 },
